@@ -3,7 +3,7 @@ A simple bash tool to toggle window on and off, binding this to a keyboard short
 
 ## tdlr
 ```bash
-# ensure you have the awesome `wmctrl` installed
+# ensure you have the awesome `wmctrl` and `xdotool` installed
 toggle.sh firefox
 ```
 
