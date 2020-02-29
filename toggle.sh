@@ -2,7 +2,8 @@
 
 # Toggle a window
 window="$1"
-desktop="$(wmctrl -lx | grep -i "$window" | awk '{$5=""}1' | sed -n 's/0x.*[[:space:]]\([[:digit:]]\)\s.*/\1/p')"
+# awk remove the window long name and avoid that your browser, shell, ... searching for instance `alacritty` collides with the software
+desktop="$(wmctrl -lx | awk '{print $1, $2, $3}' | grep -i "$window" | sed -n 's/0x.*[[:space:]]\([[:digit:]]\)\s.*/\1/p')"
 # echo "Switching $window from $desktop"
 desktop=$((1 - $desktop))
 eval "$(wmctrl -x -r $window -t $desktop)"
