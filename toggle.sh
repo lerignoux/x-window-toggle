@@ -12,6 +12,7 @@ eval "$(wmctrl -x -r $window -t $window_desktop)"
 if [ "$window_desktop" -eq "0" ]
 then
   eval "$(wmctrl -R $window)"
-  eval "$(xdotool windowraise $window_id)"
-  eval "$(xdotool windowfocus $window_id)"
+  eval "$(wmctrl -a $window)"
+  eval "$(xdotool $window_id windowraise --sync)"
+  eval "$(xdotool $window_id windowfocus --sync)"
 fi
